@@ -7,7 +7,7 @@ export interface ButtonProps {
   asChild?: boolean;
 }
 
-export function Button({ children, asChild }: ButtonProps) {
+export function Button({children, asChild}: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
 
   return (

@@ -13,6 +13,11 @@ export default {
             options: ['sm', 'md', 'lg'],
             control: {
                 type: 'inline-radio'
+            },
+            asChild: {
+                table: {
+                    disable: true,
+                }
             }
         }
     }
@@ -42,12 +47,7 @@ export const CustomComponent: StoryObj<TextProps> = {
     argTypes: {
         children: {
             table: {
-                disable: true,
-            }
-        },
-        asChild: {
-            table: {
-                disable: true,
+                disable: true
             }
         }
     }

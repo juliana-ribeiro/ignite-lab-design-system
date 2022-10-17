@@ -5,11 +5,8 @@ export default {
     title: 'Components/Button',
     component: Button,
     args: {
-        children: 'Create a account',
-    }
-} as Meta<ButtonProps>
-
-export const Default: StoryObj<ButtonProps> = {
+        children: 'Create account',
+    },
     argTypes: {
         asChild: {
             table: {
@@ -17,4 +14,6 @@ export const Default: StoryObj<ButtonProps> = {
             }
         }
     }
-}
+} as Meta<ButtonProps>
+
+export const Default: StoryObj<ButtonProps> = {}
