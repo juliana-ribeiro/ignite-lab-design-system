@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Slot } from '@radix-ui/react-slot';
-import { clsx } from 'clsx';
+import { ReactNode } from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { clsx } from 'clsx'
 
 export interface ButtonProps {
   children: ReactNode;
