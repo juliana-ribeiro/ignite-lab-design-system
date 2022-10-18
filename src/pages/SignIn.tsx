@@ -1,5 +1,5 @@
 import { Checkbox } from '@radix-ui/react-checkbox'
-import { Envelope } from 'phosphor-react'
+import { Envelope, ThermometerSimple } from 'phosphor-react'
 import { Button } from '../components/Button'
 import { Heading } from '../components/Heading'
 import { TextInput } from '../components/TextInput'
@@ -10,11 +10,19 @@ import { FormEvent, useState } from 'react'
 
 export function SignIn() {
 
+    const [input, setInput] = useState({
+      email: '',
+      password: '',
+    })
     const [isUserSignedIn, setIsUserSignedIn] = useState(false)
 
     function handleSignIn(event: FormEvent) {
         event.preventDefault()
-        setIsUserSignedIn(true)
+        const {email, password} = input 
+        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (validEmail.test(email) && password.length >= 8) {
+          setIsUserSignedIn(true)
+        } 
     }
 
     return (
@@ -30,7 +38,7 @@ export function SignIn() {
         </header>
   
         <form onSubmit={handleSignIn} className='flex flex-col gap-4 items-stretch w-full max-w-sm mt-10'>
-            { isUserSignedIn && <Text>Login realizado!</Text> }
+            { isUserSignedIn && <Text>Login realizado!</Text>}
 
           <label htmlFor='email' className='flex flex-col gap-3'>
             <Text className='font-semibold'>Endereço de e-mail</Text>
@@ -38,7 +46,7 @@ export function SignIn() {
               <TextInput.Icon>
                 <Envelope />
               </TextInput.Icon>
-              <TextInput.Input type='email' id='email' placeholder='Digite seu e-mail' />
+              <TextInput.Input type='email' id='email' value={input.email} placeholder='Digite seu e-mail' onChange={(e) => setInput((prevState) => ({ ...prevState, email: e.target.value}))} />
             </TextInput.Root>
           </label>
   
@@ -48,7 +56,7 @@ export function SignIn() {
               <TextInput.Icon>
                 <Lock />
               </TextInput.Icon>
-              <TextInput.Input type='password' id='password' placeholder='********'/>
+              <TextInput.Input type='password' id='password' value={input.password} placeholder='********' onChange={(e) => setInput((prevState) => ({ ...prevState, password: e.target.value}))}/>
             </TextInput.Root>
           </label>
   
